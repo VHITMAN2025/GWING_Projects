@@ -72,10 +72,11 @@ def download_report():
     pdf.set_font("Arial", 'B', 16)
     pdf.cell(0, 10, "Medical Report", ln=True, align='C')
     pdf.ln(5)
-    pdf.set_font("Arial", '', 12)
+    pdf.set_font("Arial", 'B', 12)
     pdf.cell(0, 8, f"Patient Name: {report['name']}", ln=True)
     pdf.cell(0, 8, f"Age: {report['age']}", ln=True)
     pdf.cell(0, 8, f"Date: {datetime.now().strftime('%d-%m-%Y')}", ln=True)
+    pdf.set_font("Arial", '', 12)
     pdf.ln(5)
     pdf.set_font("Arial", 'B', 12)
     pdf.set_fill_color(230, 240, 255)
@@ -114,9 +115,17 @@ def download_report():
     pdf.line(140, pdf.get_y(), 200, pdf.get_y())
     pdf.ln(2)
     pdf.set_font("Arial", 'I', 12)
-    pdf.cell(0, 8, "Doctor: Dr. Vijay", ln=True, align='R')
-    pdf.set_font("Arial", '', 10)
-    pdf.cell(0, 8, "Signature: Dr. Vijay", ln=True, align='R')
+    pdf.cell(0, 8, "Dr. Vijay", ln=True, align='R')
+    pdf.cell(0, 8, "Vijay Diagnostics", ln=True, align='R')
+    # Get current y position
+    y_signature = pdf.get_y()
+    # Set x so the image is right-aligned (A4 width is 210mm, image width is 40mm, right margin is 10mm)
+    x_signature = 210 - 40 - 10
+    try:
+        pdf.image("static/signature.png", x=x_signature, y=y_signature, w=40)
+    except RuntimeError:
+        pass
+    pdf.ln(22)
     pdf_bytes = pdf.output(dest='S').encode('latin1')
     buffer = io.BytesIO(pdf_bytes)
     filename = f"{report['name'].replace(' ', '_')}_medical_report.pdf"
