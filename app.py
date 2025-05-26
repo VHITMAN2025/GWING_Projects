@@ -5,6 +5,7 @@ import io
 import os
 from fpdf import FPDF
 from datetime import datetime
+from sklearn.preprocessing import StandardScaler
 
 app = Flask(__name__)
 app.secret_key = os.urandom(24)
@@ -28,7 +29,25 @@ def predict():
         float(request.form['age'])
     ]
     prediction = model.predict([data])
-    result = "Diabetic" if prediction[0] == 1 else "Non-Diabetic"
+
+    ########## Data Preprocessing and Model Implementation
+    scaler = StandardScaler()
+
+    input_data = np.asarray(data).reshape(1,-1)
+    print("Input Data:",input_data)
+
+    std_data = scaler.fit_transform(input_data)
+
+    outcome_prediction = model.predict(std_data)
+    print("The prediction:",outcome_prediction)
+
+    if outcome_prediction == 1:
+       print("Patient is Diabetic")
+    else:
+       print("Patient is Non - Diabetic")
+    ###############
+    
+    result = "Diabetic" if outcome_prediction[0] == 1 else "Non-Diabetic"
     session['report'] = {
         'name': name,
         'pregnancies': data[0],
@@ -41,7 +60,7 @@ def predict():
         'age': data[7],
         'result': result
     }
-    if prediction[0] == 1:
+    if outcome_prediction == 1:
         return redirect(url_for('diabetic'))
     else:
         return redirect(url_for('nondiabetic'))
