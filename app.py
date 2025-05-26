@@ -117,9 +117,7 @@ def download_report():
     pdf.set_font("Arial", 'I', 12)
     pdf.cell(0, 8, "Dr. Vijay", ln=True, align='R')
     pdf.cell(0, 8, "Vijay Diagnostics", ln=True, align='R')
-    # Get current y position
     y_signature = pdf.get_y()
-    # Set x so the image is right-aligned (A4 width is 210mm, image width is 40mm, right margin is 10mm)
     x_signature = 210 - 40 - 10
     try:
         pdf.image("static/signature.png", x=x_signature, y=y_signature, w=40)
