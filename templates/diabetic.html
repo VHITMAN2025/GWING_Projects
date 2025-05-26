@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Important Health Notice</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #e2476e 0%, #38f9d7 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            font-family: 'Montserrat', Arial, sans-serif;
+        }
+        .message-box {
+            background: #fff;
+            padding: 40px 50px;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2);
+            text-align: center;
+        }
+        h1 {
+            color: #e2476e;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        p {
+            color: #333;
+            font-size: 1.2rem;
+        }
+        .download-btn {
+            margin-top: 25px;
+            padding: 12px 30px;
+            background: linear-gradient(90deg, #e2476e 0%, #38f9d7 100%);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .download-btn:hover {
+            background: linear-gradient(90deg, #38f9d7 0%, #e2476e 100%);
+        }
+    </style>
+</head>
+<body>
+    <div class="message-box">
+        <h1>Attention Needed</h1>
+        <p>Our analysis suggests you may be <strong>diabetic</strong>.<br>
+        Please consult a healthcare professional for further advice and care.</p>
+<a href="{{ url_for('download_report') }}" class="download-btn">Download Medical Report (PDF)</a>    </div>
+</body>
+</html>

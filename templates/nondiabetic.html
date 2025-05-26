@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Congratulations!</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            font-family: 'Montserrat', Arial, sans-serif;
+        }
+        .message-box {
+            background: #fff;
+            padding: 40px 50px;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2);
+            text-align: center;
+        }
+        h1 {
+            color: #43e97b;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        p {
+            color: #333;
+            font-size: 1.2rem;
+        }
+        .download-btn {
+            margin-top: 25px;
+            padding: 12px 30px;
+            background: linear-gradient(90deg, #38f9d7 0%, #43e97b 100%);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .download-btn:hover {
+            background: linear-gradient(90deg, #43e97b 0%, #38f9d7 100%);
+        }
+    </style>
+</head>
+<body>
+    <div class="message-box">
+        <h1>Congratulations!</h1>
+        <p>You are <strong>not diabetic</strong>.<br>
+        Keep up your healthy lifestyle!</p>
+<a href="{{ url_for('download_report') }}" class="download-btn">Download Medical Report (PDF)</a>    </div>
+</body>
+</html>

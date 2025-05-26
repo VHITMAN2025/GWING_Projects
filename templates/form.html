@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Details Form</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Montserrat', Arial, sans-serif;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px 35px 30px 35px;
+            border-radius: 25px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.2);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 400px;
+        }
+
+        h2 {
+            color: #e2476e;
+            margin-bottom: 10px;
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+        .form-group {
+            width: 100%;
+            margin-bottom: 18px;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 6px;
+            color: #333;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        input[type="text"],
+        input[type="number"] {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1.5px solid #e2476e;
+            border-radius: 8px;
+            font-size: 1rem;
+            outline: none;
+            transition: border 0.2s;
+            background: #f9f9f9;
+        }
+
+        input[type="text"]:focus,
+        input[type="number"]:focus {
+            border: 2px solid #38f9d7;
+            background: #fff;
+        }
+
+        button {
+            background: linear-gradient(90deg, #e2476e 0%, #38f9d7 100%);
+            color: #fff;
+            font-size: 1.1rem;
+            font-weight: 700;
+            padding: 12px 0;
+            border: none;
+            border-radius: 8px;
+            width: 100%;
+            margin-top: 18px;
+            cursor: pointer;
+            box-shadow: 0 4px 14px 0 rgba(226, 71, 110, 0.15);
+            transition: background 0.2s, transform 0.2s;
+        }
+
+        button:hover {
+            background: linear-gradient(90deg, #38f9d7 0%, #e2476e 100%);
+            transform: translateY(-2px) scale(1.03);
+        }
+
+        @media (max-width: 500px) {
+            .container {
+                width: 95vw;
+                padding: 25px 8vw;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <form action="/predict" method="post">
+        <div class="container">
+            <h2>Patient Details</h2>
+            <div class="form-group">
+                <label for="name">Full Name</label>
+                <input id="name" name="name" type="text" placeholder="Enter your name" required>
+            </div>
+            <div class="form-group">
+                <label for="pregnancies">Pregnancies Count</label>
+                <input id="pregnancies" name="pregnancies" type="number" min="0" placeholder="e.g. 2" required inputmode="numeric" onwheel="this.blur()">
+            </div>
+            <div class="form-group">
+                <label for="glucose">Glucose Level</label>
+                <input id="glucose" name="glucose" type="number" min="0" placeholder="e.g. 120" required inputmode="numeric" onwheel="this.blur()">
+            </div>
+            <div class="form-group">
+                <label for="bp">Blood Pressure</label>
+                <input id="bp" name="bp" type="number" min="0" placeholder="e.g. 80" required inputmode="numeric" onwheel="this.blur()">
+            </div>
+            <div class="form-group">
+                <label for="skin">Skin Thickness</label>
+                <input id="skin" name="skin" type="number" min="0" placeholder="e.g. 20" required inputmode="numeric" onwheel="this.blur()">
+            </div>
+            <div class="form-group">
+                <label for="insulin">Insulin</label>
+                <input id="insulin" name="insulin" type="number" min="0" placeholder="e.g. 85" required inputmode="numeric" onwheel="this.blur()">
+            </div>
+            <div class="form-group">
+                <label for="bmi">BMI</label>
+                <input id="bmi" name="bmi" type="number" step="0.1" min="0" placeholder="e.g. 24.5" required inputmode="decimal" onwheel="this.blur()">
+            </div>
+            <div class="form-group">
+                <label for="dpf">Diabetes Pedigree Function</label>
+                <input id="dpf" name="dpf" type="number" step="0.01" min="0" placeholder="e.g. 0.627" required inputmode="decimal" onwheel="this.blur()">
+            </div>
+            <div class="form-group">
+                <label for="age">Age</label>
+                <input id="age" name="age" type="number" min="0" placeholder="e.g. 35" required inputmode="numeric" onwheel="this.blur()">
+            </div>
+            <button type="submit">SUBMIT</button>
+        </div>
+    </form>
+</body>
+
+</html>
