@@ -32,7 +32,6 @@ def predict():
     # prediction = model.predict([data])
 
     ########## Data Preprocessing and Model Implementation
-
     input_data = np.asarray(data).reshape(1,-1)
     print("Input Data:",input_data)
 
